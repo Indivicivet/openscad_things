@@ -3,6 +3,9 @@ use <chess_pieces_v1.scad>
 board_thick = 20;
 top_thick = 5;
 square_size = 40;
+
+board_margin = 10;
+
 expand = 0.5;
 corner_factor = 0.1;
 cocorner_factor = 1 - corner_factor * 2;
@@ -63,7 +66,13 @@ module board_top(square_size, expand=0) {
 
 module board_base(square_size) {
     difference() {
-        cube([square_size * 8, square_size * 8, board_thick])
+        linear_extrude(board_thick)
+        minkowski() {
+            square(square_size * 8)
+                ;
+            circle(board_margin)
+                ;
+        }
             ;
         translate([0, 0, board_thick - top_thick])
         scale([1, 1, 9])
