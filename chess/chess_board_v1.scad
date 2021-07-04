@@ -1,14 +1,13 @@
 use <chess_pieces_v1.scad>
 
-board_thick = 20;
-top_thick = 5;
 square_size = 40;
+corner_factor = 0.2;
 
+board_thick = 8;
+top_thick = 4;
 board_margin = 10;
 
-expand = 0.5;
-corner_factor = 0.1;
-cocorner_factor = 1 - corner_factor * 2;
+expand = 0.8;
 
 module board_top(square_size, expand=0) {
     new_square_size = square_size + expand * 2;
@@ -34,7 +33,7 @@ module board_top(square_size, expand=0) {
                         ) {
                             translate(
                                 [corner_i, corner_j]
-                                * cocorner_factor * anti_square_size
+                                * (1 - corner_factor * 2) * anti_square_size
                             )
                             difference() {
                                 translate(
@@ -44,7 +43,7 @@ module board_top(square_size, expand=0) {
                                 )
                                 square(anti_square_size * corner_factor + 0.02)
                                     ;
-                                translate([1, 1] * anti_square_size* corner_factor)
+                                translate([1, 1] * anti_square_size * corner_factor)
                                 circle(anti_square_size * corner_factor)
                                     ;
                             }
