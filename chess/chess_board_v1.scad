@@ -74,7 +74,7 @@ module board_base(square_size) {
         }
             ;
         translate([0, 0, board_thick - top_thick])
-        scale([1, 1, 9])
+        scale([1, 1, 1.01])
         board_top(square_size, expand=expand)
             ;
     }
