@@ -1,14 +1,14 @@
 use <chess_pieces_v1.scad>
 
 square_size = 40;
-corner_factor = 0.2;
+corner_factor = 0.12;
 
-board_thick = 8;
+board_thick = 10;
 top_thick = 4;
-board_margin = 10;
+board_margin = 15;
 board_inner_margin = 3;
 
-expand = 0.8;
+expand = 0.6;
 
 module board_top(square_size, expand=0) {
     new_square_size = square_size + expand * 2;
