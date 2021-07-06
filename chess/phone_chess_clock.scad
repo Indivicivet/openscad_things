@@ -1,5 +1,13 @@
 $fn = 20;
 
+module copy_mirror() {
+    children()
+        ;
+    mirror([1, 0, 0])
+    children()
+        ;
+}
+
 module buttons() {
     // core
     linear_extrude(40, center=true)
@@ -44,13 +52,28 @@ module buttons() {
     }
         ;
     // camera target bar
-    translate([0, 0, -20])
-    linear_extrude(3)
-    for (i = [-1, 1])
-    //rotate(8 * i)
-    translate([-35 * i, -30 + 5])
-    translate([-4, 0, 0])
-    square([8, 30])
+    copy_mirror()
+    translate([40, 5, -20])
+    rotate([0, 0, 180])
+    union() {
+        //rotate(8 * i)
+        linear_extrude(3)
+        minkowski() {
+            square([8 - 2 * 2, 30 - 2 * 2])
+               ;
+            translate([1, 1] * 2)
+            circle(2)
+                ;
+        }
+        difference() {
+            cube([8, 10, 10])
+                ;
+            translate([0, 10, 10])
+            rotate([0, 90, 0])
+            cylinder(r=7, h=99, center=true)
+                ;
+        }
+    }
         ;
 }
 
