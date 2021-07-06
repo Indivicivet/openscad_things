@@ -6,6 +6,7 @@ corner_factor = 0.2;
 board_thick = 8;
 top_thick = 4;
 board_margin = 10;
+board_inner_margin = 3;
 
 expand = 0.8;
 
@@ -13,24 +14,25 @@ module board_top(square_size, expand=0) {
     new_square_size = square_size + expand * 2;
     anti_square_size = square_size - expand * 2;
     linear_extrude(top_thick)
-    translate([-1, -1] * expand)
-    for (i = [1:8]) {
-        for (j = [1:8]) {
-            translate([i - 1, j - 1, 0] * square_size)
-            if ((i + j) % 2 == 1) {
-                square(square_size + expand * 2)
-                    ;
-            }
-            else {
-                translate([1, 1] * expand * 2)
-                for (corner_i = [0, 1]) {
-                    for (corner_j = [0, 1]) {
-                        if (
-                            i + corner_i > 1
-                            && i + corner_i < 9
-                            && j + corner_j > 1
-                            && j + corner_j < 9
-                        ) {
+    union() {
+        translate([-1, -1] * expand)
+        for (i = [1:8]) {
+            for (j = [1:8]) {
+                translate([i - 1, j - 1, 0] * square_size)
+                if ((i + j) % 2 == 1) {
+                    square(square_size + expand * 2)
+                        ;
+                }
+                else {
+                    translate([1, 1] * expand * 2)
+                    for (corner_i = [0, 1]) {
+                        for (corner_j = [0, 1]) {
+                            /*if (
+                                i + corner_i > 1
+                                && i + corner_i < 9
+                                && j + corner_j > 1
+                                && j + corner_j < 9
+                            )*/
                             translate(
                                 [corner_i, corner_j]
                                 * (1 - corner_factor * 2) * anti_square_size
@@ -51,14 +53,26 @@ module board_top(square_size, expand=0) {
                         }
                             ;
                     }
-                        ;
                 }
+                    ;
+                // corners
+                //translate([i - 1, j - 1, 0] * square_size)
+                //cylinder(r=3, h=top_thick)
+                    //;
+            }
+        }
+            ;
+        difference() {
+            minkowski() {
+                square(square_size * 8)
+                    ;
+                circle(board_inner_margin + expand)
+                    ;
             }
                 ;
-            // corners
-            //translate([i - 1, j - 1, 0] * square_size)
-            //cylinder(r=3, h=top_thick)
-                //;
+            translate([1, 1] * expand)
+            square(square_size * 8 - 0.001 - expand * 2)
+                ;
         }
     }
 }
