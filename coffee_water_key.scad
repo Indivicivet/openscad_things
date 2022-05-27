@@ -19,6 +19,7 @@ NCUTS = 5;
 difference() {
     union() {
         linear_extrude(KNOB_H)
+        scale(1.15)  // I liked the ratios, so being cheeky and just scaling
         minkowski() {
             difference() {
                 circle(r=18)
