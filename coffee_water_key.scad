@@ -2,7 +2,11 @@
 
 $fn = 50;
 
-TO_EDGE_45 = 30 * sqrt(2);
+BEANS = true;
+
+HEADING_ANGLE = BEANS ? -135 : -45;
+
+TO_EDGE_45 = (BEANS ? 30 : 28) * sqrt(2);
 CATCHER_R = 2;
 TO_ROD_45 = (30 + CATCHER_R + 1) * sqrt(2);
 
@@ -18,7 +22,7 @@ difference() {
                 circle(r=18)
                     ;
                 for (i=[0:NCUTS-1])
-                rotate(- 45 + (i + 0.5)*360/NCUTS)
+                rotate(HEADING_ANGLE + (i + 0.5)*360/NCUTS)
                 translate([23, 0])
                 circle(r=9, h=99)
                     ;
@@ -28,7 +32,7 @@ difference() {
                 ;
         }
             ;
-        rotate(-45)
+        rotate(HEADING_ANGLE)
         union() {
             linear_extrude(KNOB_H / 2)
             translate([TO_ROD_45 / 2, 0])
@@ -47,7 +51,12 @@ difference() {
     mirror()
     union() {
         rotate(90)
-        union() {
+        if (BEANS) {
+            scale(0.75)
+            text("Beans", halign="center", valign="center")
+                ;
+        }
+        else {
             translate([-7, 0])
             text("H", halign="center", valign="center")
                 ;
@@ -60,7 +69,7 @@ difference() {
                 ;
         }
             ;
-        translate([13, 0])
+        translate([BEANS ? 9 : 13, 0])
         circle(r=3, $fn=3)
             ;
     }
