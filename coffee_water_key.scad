@@ -10,6 +10,8 @@ TO_EDGE_45 = (BEANS ? 30 : 28) * sqrt(2);
 CATCHER_R = 2;
 TO_ROD_45 = (30 + CATCHER_R + 1) * sqrt(2);
 
+HEX_WIDTH_ADJUST = 0.1;
+
 KNOB_H = 12;
 TOTAL_H = KNOB_H + 9; // hex about 7mm
 NCUTS = 5;
@@ -43,7 +45,7 @@ difference() {
                 ;
         }
             ;
-        cylinder(r=10/sqrt(3) - 0.02, h=TOTAL_H, $fn=6)
+        cylinder(r=(10 + HEX_WIDTH_ADJUST)/sqrt(3), h=TOTAL_H, $fn=6)
             ;
     }
         ;
