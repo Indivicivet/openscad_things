@@ -4,8 +4,8 @@ module heart(
     rel_translate = 1.25,
     rel_spherize = 1,
     y_scale = 1.2,
-    thick_scale = 0.8,
-    fn_sphere = 30,
+    thick_scale = 0.9,
+    fn_sphere = 40,
     fn_circ = 30,
 ) {
     rotate([90, 0, 0])
@@ -46,10 +46,10 @@ function accumulate(vals, i) =
 
 module tier_prism(
     diam_dzs,
-    sides=4,
+    sides=5,
     down=true,
 ) {
-    rotate([0, 0, 360 / (sides * 2)])
+    rotate([0, 0, - 90 + 360 / (sides * 2)])
     for (i = [0:len(diam_dzs) - 2]) {
         translate([0, 0, (down ? -1 : 1) * accumulate(diam_dzs, i)])
         hull() {
@@ -67,25 +67,52 @@ module tier_prism(
 }
 
 
+module word_cutter(
+    words,
+    r = 28,
+    size = 6,
+) {
+    for (i = [0:len(words) - 1])
+    rotate([0, 0, 360 * i / len(words)])
+    rotate([90, 0, 0])
+    translate([0, 0, r])
+    linear_extrude(99)
+    text(words[i], halign="center", size=size)
+        ;
+}
+
+
 translate([0, 0, 25])
 heart()
     ;
 
-tier_prism([
-    [70, 2],
-    [80, 5],
-    [80, 2],
-    [75, 2],
-    [85, 1],
-    [85, 3],
-    [70, 10],
-    [70, 3],
-    [85, 1],
-    [85, 3],
-    [75, 2],
-    [80, 5],
-    [80, 2],
-    [75, 10],
-    [50, 0]
-])
+difference() {
+    tier_prism([
+        [70, 2],
+        [80, 5],
+        [80, 2],
+        [75, 2],
+        [82, 1.5],
+        [82, 3],
+        [70, 10],
+        [70, 3],
+        [82, 1.5],
+        [82, 3],
+        [75, 2],
+        [78, 5],
+        [78, 10],
+        [60, 0]
+    ])
+        ;
+
+    translate([0, 0, -23])
+    word_cutter([
+        "as strong",
+        "as death,",
+        "as hard",
+        "as hell.",
+        "Love is",
+    ])
+        ;
+}
     ;
