@@ -6,7 +6,7 @@ module heart(
     y_scale = 1.2,
     thick_scale = 0.9,
     fn_sphere = 40,
-    fn_circ = 30,
+    fn_circ = 40,
 ) {
     rotate([90, 0, 0])
     scale([1, 1, thick_scale])
@@ -70,7 +70,7 @@ module tier_prism(
 module word_cutter(
     words,
     r = 28,
-    size = 6,
+    size = 6.5,
 ) {
     for (i = [0:len(words) - 1])
     rotate([0, 0, 360 * i / len(words)])
@@ -88,7 +88,7 @@ heart()
 
 difference() {
     tier_prism([
-        [70, 2],
+        [70, 4],
         [80, 5],
         [80, 2],
         [75, 2],
@@ -105,7 +105,7 @@ difference() {
     ])
         ;
 
-    translate([0, 0, -23])
+    translate([0, 0, -24.7])
     word_cutter([
         "as strong",
         "as death,",
