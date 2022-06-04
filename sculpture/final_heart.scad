@@ -116,5 +116,16 @@ difference() {
         "Love is",
     ])
         ;
+    translate([0, 0, -accumulate(PRISM_VALS, len(PRISM_VALS)) + 1])
+    mirror([0, 0, 1])
+    linear_extrude(99)
+    mirror([1, 0])
+    text(
+        "base watermark",
+        halign="center",
+        valign="center",
+        size=5
+    )
+        ;
 }
     ;
