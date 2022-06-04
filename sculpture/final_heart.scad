@@ -1,30 +1,30 @@
 
 module heart(
-    core_size = 20,
+    core_size = 25,
     rel_translate = 1,
-    rel_spherize = 0.6  ,
+    rel_spherize = 1.2,
+    rel_spherize_bot = 0.7,
+    top_thick_scale = 0.8,
+    rel_translate_botz = 0.5,
     rel_extrude = 0.4,
-    y_scale = 1.2,
-    thick_scale = 0.9,
+    y_scale = 1,
     fn_sphere = 40,
     fn_circ = 40,
 ) {
     rotate([90, 0, 0])
-    scale([1, 1, thick_scale])
-    minkowski() {
-        linear_extrude(core_size * rel_extrude, center=true)
-        scale([1, y_scale])
-        for (rot = [-45, 45])
+    for (rot = [-45, 45])
+    hull() {
         rotate(rot)
-        hull() {
-            translate([0, core_size * rel_translate])
-            circle(d=core_size, $fn=fn_circ)
-                ;
-            square(core_size, center=true)
+        scale([1, 1, top_thick_scale])
+        translate([0, core_size * rel_translate, 0])
+        minkowski() {
+            scale([1, y_scale])
+            sphere(r=core_size * rel_spherize, $fn=fn_sphere)
                 ;
         }
             ;
-        sphere(r=core_size * rel_spherize, $fn=fn_sphere)
+        translate([0, -core_size * rel_translate_botz, 0])
+        sphere(r=core_size * rel_spherize_bot, $fn=fn_sphere)
             ;
     }
         ;
