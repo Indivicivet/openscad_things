@@ -1,15 +1,15 @@
 
 module heart(
-    core_size = 25,
+    core_size = 30,
     rel_translate = 1,
     rel_spherize = 1.2,
     rel_spherize_bot = 0.7,
-    top_thick_scale = 0.8,
-    rel_translate_botz = 0.5,
+    top_thick_scale = 0.88,
+    rel_translate_botz = 0.6 ,
     rel_extrude = 0.4,
     y_scale = 1,
-    fn_sphere = 40,
-    fn_circ = 40,
+    fn_sphere = 70,
+    fn_circ = 50,
 ) {
     rotate([90, 0, 0])
     for (rot = [-45, 45])
@@ -83,7 +83,7 @@ module word_cutter(
 }
 
 
-translate([0, 0, 25])
+translate([0, 0, 32])
 heart()
     ;
 
