@@ -123,10 +123,10 @@ difference() {
     linear_extrude(99)
     mirror([1, 0])
     text(
-        "base watermark",
+        "by Indi",
         halign="center",
         valign="center",
-        size=5
+        size=7
     )
         ;
 }
