@@ -2,8 +2,9 @@
 module heart(
     core_size = 20,
     rel_translate = 1,
-    rel_spherize = 0.9,
-    y_scale = 1.3,
+    rel_spherize = 0.6  ,
+    rel_extrude = 0.4,
+    y_scale = 1.2,
     thick_scale = 0.9,
     fn_sphere = 40,
     fn_circ = 40,
@@ -11,7 +12,7 @@ module heart(
     rotate([90, 0, 0])
     scale([1, 1, thick_scale])
     minkowski() {
-        linear_extrude(0.01)
+        linear_extrude(core_size * rel_extrude, center=true)
         scale([1, y_scale])
         for (rot = [-45, 45])
         rotate(rot)
