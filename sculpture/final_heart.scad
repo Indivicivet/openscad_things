@@ -93,7 +93,7 @@ PRISM_VALS = [
     [75, 2],
     [80, 2],
     [80, 3],
-    [70, 12],
+    [70, 11],
     [70, 3],
     [75, 2],
     [75, 3],
@@ -107,7 +107,7 @@ PRISM_VALS = [
 difference() {
     tier_prism(PRISM_VALS)
         ;
-    translate([0, 0, -8 - accumulate(PRISM_VALS, 6)])
+    translate([0, 0, -7.5 - accumulate(PRISM_VALS, 6)])
     word_cutter([
         "as strong",
         "as death,",
