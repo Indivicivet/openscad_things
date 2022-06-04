@@ -1,25 +1,29 @@
 
 module heart(
-    size0 = 20,
-    rel_translate = 1.6,
-    rel_spherize = 1.5,
-    rel_spherize_bot = 0.8,
-    y_scale = 1.2,
+    core_size = 20,
+    rel_translate = 1,
+    rel_spherize = 0.9,
+    y_scale = 1.3,
     thick_scale = 0.9,
     fn_sphere = 40,
     fn_circ = 40,
 ) {
     rotate([90, 0, 0])
     scale([1, 1, thick_scale])
-    scale([1, y_scale, 1])
-    for (rot = [-35, 35])
-    hull() {
+    minkowski() {
+        linear_extrude(0.01)
+        scale([1, y_scale])
+        for (rot = [-45, 45])
         rotate(rot)
-        translate([0, size0 * rel_translate, 0])
-        sphere(r=size0 * rel_spherize, $fn=fn_sphere)
+        hull() {
+            translate([0, core_size * rel_translate])
+            circle(d=core_size, $fn=fn_circ)
+                ;
+            square(core_size, center=true)
+                ;
+        }
             ;
-        translate([0, -5, 0])
-        sphere(r=size0 * rel_spherize_bot, $fn=fn_sphere)
+        sphere(r=core_size * rel_spherize, $fn=fn_sphere)
             ;
     }
         ;
@@ -78,7 +82,7 @@ module word_cutter(
 }
 
 
-translate([0, 0, 15])
+translate([0, 0, 25])
 heart()
     ;
 
