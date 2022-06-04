@@ -118,6 +118,7 @@ difference() {
     ])
         ;
     translate([0, 0, -accumulate(PRISM_VALS, len(PRISM_VALS)) + 1])
+    rotate([0, 0, 180])
     mirror([0, 0, 1])
     linear_extrude(99)
     mirror([1, 0])
