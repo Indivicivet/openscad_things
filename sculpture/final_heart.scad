@@ -70,7 +70,7 @@ module tier_prism(
 module word_cutter(
     words,
     r = 28,
-    size = 6.5,
+    size = 6,
 ) {
     for (i = [0:len(words) - 1])
     rotate([0, 0, 360 * i / len(words)])
@@ -87,19 +87,19 @@ heart()
     ;
 
 PRISM_VALS = [
-    [70, 4],
-    [80, 5],
-    [80, 2],
+    [72, 3],
+    [78, 4],
+    [78, 2],
     [75, 2],
-    [82, 1.5],
-    [82, 3],
-    [70, 10],
+    [80, 2],
+    [80, 3],
+    [70, 12],
     [70, 3],
-    [77, 1.5],
-    [77, 3],
+    [75, 2],
+    [75, 3],
     [70, 2],
+    [72, 4],
     [72, 5],
-    [72, 7],
     [58, 0]
 ]
     ;
@@ -107,7 +107,7 @@ PRISM_VALS = [
 difference() {
     tier_prism(PRISM_VALS)
         ;
-    translate([0, 0, -7.2 - accumulate(PRISM_VALS, 6)])
+    translate([0, 0, -8 - accumulate(PRISM_VALS, 6)])
     word_cutter([
         "as strong",
         "as death,",
