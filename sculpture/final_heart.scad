@@ -1,9 +1,9 @@
 
 module heart(
     core_size = 20,
-    rel_translate = 1.25,
-    rel_spherize = 1,
-    y_scale = 1.2,
+    rel_translate = 1,
+    rel_spherize = 0.9,
+    y_scale = 1.3,
     thick_scale = 0.9,
     fn_sphere = 40,
     fn_circ = 40,
