@@ -1,13 +1,13 @@
 
 module heart(
     core_size = 30,
-    rel_translate = 1,
-    rel_spherize = 1.2,
-    rel_spherize_bot = 0.7,
-    top_thick_scale = 0.88,
+    rel_translate = 0.8,
+    rel_spherize = 1,
+    rel_spherize_bot = 0.6,
+    top_thick_scale = 0.95,
     rel_translate_botz = 0.6 ,
     rel_extrude = 0.4,
-    y_scale = 1,
+    y_scale = 1.2,
     fn_sphere = 70,
     fn_circ = 50,
 ) {
