@@ -44,23 +44,39 @@ function accumulate(vals, i) =
         ;
 
 
+module nice_ngon(
+    d,
+    sides,
+    mink,
+    fn_mink = 30,
+){
+    linear_extrude(0.01)
+    minkowski() {
+        circle(d=d - 2 * mink, $fn=sides)
+            ;
+        circle(r=mink, $fn=fn_mink)
+            ;
+    }
+        ;
+}
+
 
 module tier_prism(
     diam_dzs,
-    sides=5,
-    down=true,
+    sides = 5,
+    down = true,
+    mink = 5,
 ) {
     rotate([0, 0, - 90 + 360 / (sides * 2)])
     for (i = [0:len(diam_dzs) - 2]) {
         translate([0, 0, (down ? -1 : 1) * accumulate(diam_dzs, i)])
         hull() {
-            linear_extrude(0.01)
-            circle(d=diam_dzs[i][0], $fn=sides)
+            nice_ngon(diam_dzs[i][0], sides=sides, mink=mink)
                 ;
             translate([0, 0, (down ? - 1 : 1) * diam_dzs[i][1]])
-            linear_extrude(0.01)
-            circle(d=diam_dzs[i + 1][0], $fn=sides)
+            nice_ngon(diam_dzs[i + 1][0], sides=sides, mink=mink)
                 ;
+            
         }
             ;
     }
