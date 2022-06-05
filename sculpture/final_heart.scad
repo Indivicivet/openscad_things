@@ -68,6 +68,9 @@ module tier_prism(
 }
 
 
+FONT = "Adobe Gothic Std";
+
+
 module word_cutter(
     words,
     r = 28,
@@ -78,7 +81,7 @@ module word_cutter(
     rotate([90, 0, 0])
     translate([0, 0, r])
     linear_extrude(99)
-    text(words[i], halign="center", size=size)
+    text(words[i], halign="center", size=size, font=FONT)
         ;
 }
 
@@ -126,7 +129,8 @@ difference() {
         "by Indi",
         halign="center",
         valign="center",
-        size=7
+        size=6,
+        font=FONT
     )
         ;
 }
