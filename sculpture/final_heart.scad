@@ -4,7 +4,8 @@ module heart(
     rel_translate = 0.8,
     rel_spherize = 1,
     rel_spherize_bot = 0.6,
-    top_thick_scale = 0.95,
+    top_thick_scale = 0.85,
+    bot_thick_scale = 0.8,
     rel_translate_botz = 0.6 ,
     rel_extrude = 0.4,
     y_scale = 1.2,
@@ -23,6 +24,7 @@ module heart(
                 ;
         }
             ;
+        scale([1, 1, bot_thick_scale])
         translate([0, -core_size * rel_translate_botz, 0])
         sphere(r=core_size * rel_spherize_bot, $fn=fn_sphere)
             ;
