@@ -124,6 +124,7 @@ PRISM_VALS = [
 ]
     ;
 
+scale(0.8)
 difference() {
     tier_prism(PRISM_VALS)
         ;
