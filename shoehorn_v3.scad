@@ -55,3 +55,11 @@ for (dy = [0:0.1:1])
 linear_extrude(4 + dy - 1)
 curved_base(expand=7 - dy * dy, inspand=3)
 	;
+
+
+linear_extrude(height * 0.8)
+for (sign = [-1, 0, 1])
+rotate(30 * sign)
+translate([roc + 1, 0])
+circle(r=1)
+    ;
