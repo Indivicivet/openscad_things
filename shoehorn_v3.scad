@@ -57,9 +57,16 @@ curved_base(expand=7 - dy * dy, inspand=3)
 	;
 
 
-linear_extrude(height * 0.8)
 for (sign = [-1, 0, 1])
 rotate(30 * sign)
-translate([roc + 1, 0])
-circle(r=1)
+union() {
+    translate([roc + 1, 0])
+    linear_extrude(height * 0.8)
+    circle(r=1)
+        ;
+    translate([roc + 1, 0, height * 0.8])
+    scale([1, 1, 2])
+    sphere(r=1)
+        ;
+}
     ;
