@@ -53,7 +53,7 @@ intersection() {
 // very hacky post-hoc way to smooth this :)
 for (dy = [0:0.1:1])
 linear_extrude(4 + dy - 1)
-curved_base(expand=7 - dy * dy, inspand=3)
+curved_base(expand=7 - dy * dy, inspand=3 - dy * dy)
 	;
 
 
