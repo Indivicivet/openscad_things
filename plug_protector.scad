@@ -53,6 +53,7 @@ module plug_segment(r0, r1, z0, z1) {
 }
 
 
+rotate([180, 0, 0])
 difference() {
     union() {
         plug_segment(6, 6, 0, SINGLE_Z - 16)
