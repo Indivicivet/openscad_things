@@ -40,42 +40,28 @@ module smoothed_plug(mink=2) {
 }
 
 
+module plug_segment(r0, r1, z0, z1) {
+    hull() {
+        translate([0, 0, z0])
+        smoothed_plug(r0)
+            ;
+        translate([0, 0, z1])
+        smoothed_plug(r1)
+            ;
+    }
+        ;
+}
+
+
 difference() {
     union() {
-        hull() {
-            smoothed_plug(6)
-                ;
-            translate([0, 0, SINGLE_Z - 9])
-            smoothed_plug(4)
-                ;
-        }
+        plug_segment(6, 4, 0, SINGLE_Z - 9)
             ;
-        hull() {
-            translate([0, 0, SINGLE_Z - 9])
-            smoothed_plug(4)
-                ;
-            translate([0, 0, SINGLE_Z - 7])
-            smoothed_plug(6)
-                ;
-        }
+        plug_segment(4, 6, SINGLE_Z - 9, SINGLE_Z - 7)
             ;
-        hull() {
-            translate([0, 0, SINGLE_Z - 7])
-            smoothed_plug(6)
-                ;
-            translate([0, 0, SINGLE_Z - 5])
-            smoothed_plug(6)
-                ;
-        }
+        plug_segment(6, 6, SINGLE_Z - 7, SINGLE_Z - 5)
             ;
-        hull() {
-            translate([0, 0, SINGLE_Z - 5])
-            smoothed_plug(6)
-                ;
-            translate([0, 0, SINGLE_Z - 0.5])
-            smoothed_plug(1)
-                ;
-        }
+        plug_segment(6, 1, SINGLE_Z - 5, SINGLE_Z - 0.5)
             ;
     }
         ;
