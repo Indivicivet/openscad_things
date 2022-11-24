@@ -55,9 +55,13 @@ module plug_segment(r0, r1, z0, z1) {
 
 difference() {
     union() {
-        plug_segment(6, 4, 0, SINGLE_Z - 9)
+        plug_segment(6, 6, 0, SINGLE_Z - 16)
             ;
-        plug_segment(4, 6, SINGLE_Z - 9, SINGLE_Z - 7)
+        plug_segment(6, 4.5, SINGLE_Z - 16, SINGLE_Z - 12)
+            ;
+        plug_segment(4.5, 4.5, SINGLE_Z - 12, SINGLE_Z - 8)
+            ;
+        plug_segment(4.5, 6, SINGLE_Z - 8, SINGLE_Z - 7)
             ;
         plug_segment(6, 6, SINGLE_Z - 7, SINGLE_Z - 5)
             ;
