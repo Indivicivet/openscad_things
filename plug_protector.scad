@@ -26,16 +26,28 @@ module cutout_base(expand=0) {
         ;
 }
 
-linear_extrude(SINGLE_Z - 1)
 difference() {
-    minkowski() {
-        hull()
-        cutout_base(expand=-2)
+    hull() {
+        linear_extrude(SINGLE_Z - 5)
+        minkowski() {
+            hull()
+            cutout_base(expand=-2)
+                ;
+            circle(r=8, $fn=50)
+                ;
+        }
             ;
-        circle(r=8, $fn=50)
-            ;
+        linear_extrude(SINGLE_Z - 0.5)
+        minkowski() {
+            hull()
+            cutout_base(expand=-2)
+                ;
+            circle(r=3, $fn=50)
+                ;
+        }
     }
         ;
+    linear_extrude(999, center=true)
     cutout_base(expand=0.1)
         ;
 }
