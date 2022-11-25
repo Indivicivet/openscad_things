@@ -76,12 +76,13 @@ difference() {
     linear_extrude(999, center=true)
     cutout_base(expand=PINS_EXPAND)
         ;
+    translate([0, 0, SINGLE_Z])
     hull() {
-        translate([0, 0, -0.01])
+        translate([0, 0, 0.01])
         linear_extrude(0.01)
         cutout_base(expand=5)
             ;
-        translate([0, 0, 3])
+        translate([0, 0, -3])
         linear_extrude(0.01)
         cutout_base(expand=PINS_EXPAND)
             ;
