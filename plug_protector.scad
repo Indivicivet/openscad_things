@@ -63,7 +63,9 @@ difference() {
             ;
         plug_segment(4, 4, 12, 8)
             ;
-        plug_segment(4, 6, 8, 7)
+        plug_segment(4, 5.75, 8, 7.5)
+            ;
+        plug_segment(5.75, 6, 7.5, 7)
             ;
         plug_segment(6, 6, 7, 5)
             ;
