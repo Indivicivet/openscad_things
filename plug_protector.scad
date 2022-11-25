@@ -9,7 +9,7 @@ SINGLE_W = 4;
 SINGLE_H = 7.93;
 SINGLE_Z = 22.73;
 
-PINS_EXPAND = 0.1;
+PINS_EXPAND = 0.15;
 
 
 module cutout_base(expand=0) {
