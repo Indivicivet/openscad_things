@@ -8,6 +8,7 @@ HEADING_ANGLE = BEANS ? -135 : -45;
 
 TO_EDGE_45 = (BEANS ? 30 : 28) * sqrt(2);
 CATCHER_R = 2;
+CATCHER = true;
 TO_ROD_45 = (30 + CATCHER_R + 1) * sqrt(2);
 
 HEX_WIDTH_ADJUST = 0.1;
@@ -35,6 +36,7 @@ difference() {
                 ;
         }
             ;
+        if(CATCHER)
         rotate(HEADING_ANGLE)
         union() {
             linear_extrude(KNOB_H / 2)
