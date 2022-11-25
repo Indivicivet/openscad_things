@@ -80,7 +80,7 @@ difference() {
             ;
         translate([0, 0, 3])
         linear_extrude(0.01)
-        cutout_base(expand=0.01)
+        cutout_base(expand=0.1)
             ;
     }
 }
