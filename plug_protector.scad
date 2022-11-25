@@ -55,20 +55,19 @@ module plug_segment(r0, r1, z0, z1) {
 }
 
 
-rotate([180, 0, 0])
 difference() {
     union() {
-        plug_segment(6, 6, 0, SINGLE_Z - 16)
+        plug_segment(6, 6, SINGLE_Z, 16)
             ;
-        plug_segment(6, 4.5, SINGLE_Z - 16, SINGLE_Z - 12)
+        plug_segment(6, 4.5, 16, 12)
             ;
-        plug_segment(4.5, 4.5, SINGLE_Z - 12, SINGLE_Z - 8)
+        plug_segment(4.5, 4.5, 12, 8)
             ;
-        plug_segment(4.5, 6, SINGLE_Z - 8, SINGLE_Z - 7)
+        plug_segment(4.5, 6, 8, 7)
             ;
-        plug_segment(6, 6, SINGLE_Z - 7, SINGLE_Z - 5)
+        plug_segment(6, 6, 7, 5)
             ;
-        plug_segment(6, 1, SINGLE_Z - 5, SINGLE_Z - 0.5)
+        plug_segment(6, 1, 5, 0.5)
             ;
     }
         ;
