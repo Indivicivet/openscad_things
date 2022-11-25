@@ -9,6 +9,8 @@ SINGLE_W = 4;
 SINGLE_H = 7.93;
 SINGLE_Z = 22.73;
 
+PINS_EXPAND = 0.1;
+
 
 module cutout_base(expand=0) {
     for (xoffs = [-HOFFS, HOFFS])
@@ -71,7 +73,7 @@ difference() {
     }
         ;
     linear_extrude(999, center=true)
-    cutout_base(expand=0.1)
+    cutout_base(expand=PINS_EXPAND)
         ;
     hull() {
         translate([0, 0, -0.01])
@@ -80,7 +82,7 @@ difference() {
             ;
         translate([0, 0, 3])
         linear_extrude(0.01)
-        cutout_base(expand=0.1)
+        cutout_base(expand=PINS_EXPAND)
             ;
     }
 }
