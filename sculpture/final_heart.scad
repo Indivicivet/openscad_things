@@ -145,7 +145,7 @@ difference() {
     linear_extrude(99)
     mirror([1, 0])
     text(
-        "by Indi",
+        "for Amanda",
         halign="center",
         valign="center",
         size=6,
