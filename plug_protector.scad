@@ -3,6 +3,8 @@ CONTRACTED = true;
 VOFFS = CONTRACTED ? 10.8: 22.2;
 HOFFS = 22.2 / 2;
 
+GLOBAL_MINK_OFFSET = CONTRACTED ? -1 : 0;
+
 PAIR_W = 6.35;
 PAIR_H = 4;
 PAIR_Z = 17.7;
@@ -37,7 +39,7 @@ module smoothed_plug(mink=2) {
         hull()
         cutout_base(expand=-2)
             ;
-        circle(r=2 + mink, $fn=50)
+        circle(r=2 + mink + GLOBAL_MINK_OFFSET, $fn=50)
             ;
     }
         ;
