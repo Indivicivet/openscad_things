@@ -8,7 +8,7 @@ PAIR_H = 4;
 PAIR_Z = 17.7;
 
 SINGLE_W = 4;
-SINGLE_H = 7.93;
+SINGLE_H = CONTRACTED ? 8.5 : 7.93; // buffer room
 SINGLE_Z = 22.73;
 
 PINS_EXPAND = 0.15;
