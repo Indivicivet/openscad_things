@@ -1,4 +1,6 @@
-VOFFS = 22.2;
+CONTRACTED = true;
+// 16.8=4+8+4.8, so offs = 4.8+2+4 = 10.8ish
+VOFFS = CONTRACTED ? 10.8: 22.2;
 HOFFS = 22.2 / 2;
 
 PAIR_W = 6.35;
