@@ -58,7 +58,7 @@ module rot_stopper() {
     rotate([0, 0, -i * 0.5])
     translate([20, 0, 0])
     translate([-0.5, -0.5, 0])
-    cube([1, 1, 0.8 + exp(-i / 20)])
+    cube([1, 1, 0.4 * (i < 90 ? 1 : 1 - ((i-90)/10)) + 0.8 + exp(-i / 20)])
         ;
 }
 
