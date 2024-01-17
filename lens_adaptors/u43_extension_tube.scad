@@ -54,9 +54,11 @@ module overhang_print_helper() {
 
 
 module rot_stopper() {
+    for (i=[0:100])
+    rotate([0, 0, -i * 0.5])
     translate([20, 0, 0])
     translate([-0.5, -0.5, 0])
-    cube([1, 1, 3])
+    cube([1, 1, 0.8 + exp(-i / 20)])
         ;
 }
 
@@ -65,6 +67,7 @@ module rot_stopper() {
 centered_camera_mount()
     ;
 
+color("red")
 for (theta=[9.5, 116, 235])
 rotate([0, 0, theta])
 rot_stopper()
