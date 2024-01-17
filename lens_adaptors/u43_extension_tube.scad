@@ -53,8 +53,21 @@ module overhang_print_helper() {
 }
 
 
+module rot_stopper() {
+    translate([20, 0, 0])
+    translate([-0.5, -0.5, 0])
+    cube([1, 1, 3])
+        ;
+}
+
+
 // stick the lens in here
 centered_camera_mount()
+    ;
+
+for (theta=[9.5, 116, 235])
+rotate([0, 0, theta])
+rot_stopper()
     ;
 
 color("blue")
