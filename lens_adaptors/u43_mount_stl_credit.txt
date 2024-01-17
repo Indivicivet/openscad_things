@@ -1,2 +1,7 @@
-credit to Anthony Kouttron
+the following files are credit to Anthony Kouttron
 https://salvagedcircuitry.com/u43-mount.html
+
+u43 camera mount.PDF
+u43 camera mount.STL
+u43 lens mount.PDF
+u43 lens mount.STL
