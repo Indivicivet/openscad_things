@@ -3,7 +3,7 @@ LM_OFFCENTER = 54;  // centering looks very clclose
 
 SLICE_THICK = 0.05;
 SLICE_FROM_H = 2;
-TUBE_EXT_NOT_INCLUDING_MOUNTS = 20;
+TUBE_EXT_NOT_INCLUDING_MOUNTS = 8;
 
 
 module centered_camera_mount() {
