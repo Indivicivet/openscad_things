@@ -35,14 +35,38 @@ module centered_lens_mount() {
 }
 
 
+OH_INNERMOST = 17.8;
+OH_UPPERMOST = 1.5;
+// OH_LOWERMOST = -3;
+OH_OUTERMOST = 21;
+OH_LOWERMOST = (OH_INNERMOST - OH_OUTERMOST) * 1.5 + OH_UPPERMOST;
+
+
+module overhang_print_helper() {
+    rotate_extrude()
+    polygon([
+        [OH_OUTERMOST, OH_LOWERMOST],
+        [OH_OUTERMOST, OH_UPPERMOST],
+        [OH_INNERMOST, OH_UPPERMOST]
+    ])
+        ;
+}
+
+
 // stick the lens in here
 centered_camera_mount()
     ;
 
+color("blue")
 translate([0, 0, SLICE_FROM_H])
 camera_mount_top_slice(thick=TUBE_EXT_NOT_INCLUDING_MOUNTS - SLICE_FROM_H)
     ;
 
 translate([0, 0, TUBE_EXT_NOT_INCLUDING_MOUNTS])
-centered_lens_mount()
-    ;
+union() {
+    centered_lens_mount()
+        ;
+    color("red", alpha=0.7)
+    overhang_print_helper()
+        ;
+}
