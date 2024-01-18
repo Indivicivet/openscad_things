@@ -36,7 +36,7 @@ module centered_lens_mount() {
 
 
 OH_INNERMOST = 17.8;
-OH_UPPERMOST = 2.5;
+OH_UPPERMOST = 1.7;
 // OH_LOWERMOST = -3;
 OH_OUTERMOST = 21;
 OH_LOWERMOST = (
