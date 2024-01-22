@@ -22,6 +22,25 @@ module centered_lens_mount() {
         ;
 }
 
+OH_INNERMOST = 17.8;
+OH_UPPERMOST = 1.3;
+// OH_LOWERMOST = -3;
+OH_OUTERMOST = NIKON_F_INNER_R + 0.1;
+OH_LOWERMOST = (
+    (OH_INNERMOST - OH_OUTERMOST) * (TUBE_EXT_NOT_INCLUDING_MOUNTS >= 5 ? 1.5 : 0.75)
+    + OH_UPPERMOST
+);
+
+module overhang_print_helper(opposite_tri=false) {
+    rotate_extrude()
+    polygon([
+        [OH_OUTERMOST, OH_LOWERMOST],
+        (opposite_tri ? [OH_INNERMOST, OH_LOWERMOST] : [OH_OUTERMOST, OH_UPPERMOST]),
+        [OH_INNERMOST, OH_UPPERMOST]
+    ])
+        ;
+}
+
 
 module rot_stopper() {
     for (i=[0:100])
@@ -59,7 +78,18 @@ nikon_f_cylinder()
     ;
 
 translate([0, 0, BARREL_HEIGHT])
-centered_lens_mount()
+union() {
+    difference() {
+        centered_lens_mount()
+            ;
+        overhang_print_helper(opposite_tri=true)
+            ;
+    }
+        ;
+    color("red", alpha=0.7)
+    overhang_print_helper()
+        ;
+}
     ;
 
 // ruler
