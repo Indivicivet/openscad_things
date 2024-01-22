@@ -6,9 +6,8 @@ FLANGE_DELTA = NIKON_F_FLANGE - M43_FLANGE;
 
 BARREL_HEIGHT = FLANGE_DELTA; // todo :: probs won't quite be this...
 
-NIKON_F_INNER_R = 24;
-CYLINDER_WALL_THICK = 2.5;
-
+NIKON_F_INNER_R = 23.2 + 0.1;
+CYLINDER_WALL_THICK = 3;
 
 ROT_GRIPPER_INSET = 23.2 - 22.0; // from F mount diagram
 ROT_GRIPPER_THICK = 3;  // gap is 3.1 mm
