@@ -94,8 +94,3 @@ union() {
         ;
 }
     ;
-
-// ruler
-translate([28, 0, 0])
-cube([1, 1, FLANGE_DELTA])
-    ;
