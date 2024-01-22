@@ -1,5 +1,10 @@
 LM_OFFCENTER = 54;  // centering looks very close
 
+M43_FLANGE = 19.25;
+NIKON_F_FLANGE = 46.5;
+FLANGE_DELTA = NIKON_F_FLANGE - M43_FLANGE;
+
+
 module centered_lens_mount() {
     translate([-0.5, 0.5, 0] * LM_OFFCENTER)
     rotate([90, 0, 0])
@@ -24,6 +29,11 @@ rotate([0, 0, theta])
 rot_stopper()
     ;
 
-translate([0, 0, 20])
+translate([0, 0, FLANGE_DELTA]) // todo :: probs won't quite be this...
 centered_lens_mount()
+    ;
+
+// ruler
+translate([28, 0, 0])
+cube([1, 1, FLANGE_DELTA])
     ;
