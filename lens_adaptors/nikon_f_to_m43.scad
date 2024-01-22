@@ -9,8 +9,9 @@ BARREL_HEIGHT = FLANGE_DELTA; // todo :: probs won't quite be this...
 NIKON_F_INNER_R = 24;
 CYLINDER_WALL_THICK = 2.5;
 
-ROT_GRIPPER_INSET = 1;
 
+ROT_GRIPPER_INSET = 23.2 - 22.0; // from F mount diagram
+ROT_GRIPPER_THICK = 3;  // gap is 3.1 mm
 
 $fn = 60;
 
@@ -50,7 +51,7 @@ module rot_stopper() {
     cube([
         ROT_GRIPPER_INSET + 0.1,
         1,
-        0.4 * (i < 90 ? 1 : 1 - ((i-90)/10)) + 0.8 + exp(-i / 20)
+        ROT_GRIPPER_THICK + exp(-i / 20) + (i < 90 ? 0 : - 0.4 * ((i-90)/10))
     ])
         ;
 }
