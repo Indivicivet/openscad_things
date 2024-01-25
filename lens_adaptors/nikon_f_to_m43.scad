@@ -72,8 +72,8 @@ module nikon_f_cylinder() {
 
 
 color("red")
-for (theta=[9.5, 116, 235])
-rotate([0, 0, theta])
+for (theta=[0, 102.5, 225.5])
+rotate([0, 0, theta + 9.5])  // sorta arbitrary rotation...
 rot_stopper()
     ;
 
