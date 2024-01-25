@@ -73,7 +73,7 @@ module nikon_f_cylinder() {
 
 color("red")
 for (theta=[0, 107.5 + 8.5, 225.5])  // hand adjust vs m4/3 loc; 8~20 deg?
-rotate([0, 0, theta + 9.5])  // sorta arbitrary rotation from m4/3
+rotate([0, 0, theta - 180 - 10])  // rough guess at top-aligning
 rot_stopper()
     ;
 
