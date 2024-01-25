@@ -6,7 +6,7 @@ FLANGE_DELTA = NIKON_F_FLANGE - M43_FLANGE;
 
 EYEBALL_PEN_DIFF = 2;
 EYEBALL_TOP_THICK = 6;
-SAFETY_DIFF = 4; // better to be slightly short for a telephoto!
+SAFETY_DIFF = 2; // better to be slightly short for a telephoto!
 BARREL_HEIGHT = FLANGE_DELTA + EYEBALL_PEN_DIFF - EYEBALL_TOP_THICK - SAFETY_DIFF;
 
 NIKON_F_INNER_R = 23.2 + 0.1;
