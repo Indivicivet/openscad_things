@@ -4,7 +4,7 @@ M43_FLANGE = 19.25;
 NIKON_F_FLANGE = 46.5;
 FLANGE_DELTA = NIKON_F_FLANGE - M43_FLANGE;
 
-EYEBALL_PEN_DIFF = 2;
+EYEBALL_PEN_DIFF = 0.8;
 EYEBALL_TOP_THICK = 6;
 SAFETY_DIFF = 2; // better to be slightly short for a telephoto!
 BARREL_HEIGHT = FLANGE_DELTA + EYEBALL_PEN_DIFF - EYEBALL_TOP_THICK - SAFETY_DIFF;
@@ -13,7 +13,7 @@ NIKON_F_INNER_R = 23.2 + 0.1;
 CYLINDER_WALL_THICK = 3;
 
 ROT_GRIPPER_INSET = 23.2 - 22.0; // from F mount diagram
-ROT_GRIPPER_THICK = 3;  // gap is 3.1 mm
+ROT_GRIPPER_THICK = 1.8;  // gap is 3.1 mm... or is it? maybe to inner it's ~1.9?
 
 $fn = 60;
 
