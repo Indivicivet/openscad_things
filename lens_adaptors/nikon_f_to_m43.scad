@@ -47,7 +47,7 @@ module overhang_print_helper(opposite_tri=false) {
 
 module rot_stopper() {
     for (i=[0:100])
-    rotate([0, 0, -i * 0.5])
+    rotate([0, 0, (i-99) * 0.5])
     translate([NIKON_F_INNER_R - ROT_GRIPPER_INSET, 0, 0])
     translate([0, -0.5, 0])
     cube([
