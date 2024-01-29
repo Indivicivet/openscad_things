@@ -35,13 +35,29 @@ OH_LOWERMOST = (
 );
 
 module overhang_print_helper(opposite_tri=false) {
-    rotate_extrude()
-    polygon([
-        [OH_OUTERMOST, OH_LOWERMOST],
-        (opposite_tri ? [OH_INNERMOST, OH_LOWERMOST] : [OH_OUTERMOST, OH_UPPERMOST]),
-        [OH_INNERMOST, OH_UPPERMOST]
-    ])
-        ;
+    difference() {
+        rotate_extrude()
+        polygon([
+            [OH_OUTERMOST, OH_LOWERMOST],
+            (
+                opposite_tri
+                ? [OH_INNERMOST, OH_LOWERMOST]
+                : [OH_OUTERMOST, OH_UPPERMOST]
+            ),
+            [OH_INNERMOST, OH_UPPERMOST]
+        ])
+            ;
+        // hacky way to avoid filling in camera lock slot (oops!)
+        translate([0, 0, 0.19])
+        linear_extrude(h=999)
+        difference() {
+            circle(r=99)
+                ;
+            circle(r=22.2)
+                ;
+        }
+            ;
+    }
 }
 
 
