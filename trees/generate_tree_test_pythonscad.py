@@ -10,7 +10,7 @@ class Node:
     y: float = 0
     h: float = 5
     r_top: float = 5
-    children: List = field(default_factory=lambda: [])
+    children: list = field(default_factory=lambda: [])
 
     cum_x: float = 0
     cum_y: float = 0
