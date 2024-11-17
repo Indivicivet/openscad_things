@@ -81,7 +81,7 @@ def get_fn(r):
 
 
 def thin_disc(r):
-    return cylinder(r=r, h=0.01, segments=get_fn(r))
+    return cylinder(r=r, h=0.01)  # , segments=get_fn(r)
 
 
 def solidify_tree(node, start_r=BASE_WIDTH):
