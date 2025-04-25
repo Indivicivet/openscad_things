@@ -18,10 +18,10 @@ module insert_2d(h_expand=10, v_expand=6) {
         ;
 }
 
-module surrounder_plate(h_expand=30, v_expand=20)
+module surrounder_plate(h_expand=13, v_expand=12)
 linear_extrude(0.01)
-translate([-T_WIDTH / 2 - h_expand/2, -v_expand/2])
-square([T_WIDTH + h_expand, BAR_HEIGHT + v_expand])
+translate([-T_WIDTH / 2 - h_expand, -(v_expand-6)/2])
+square([T_WIDTH + h_expand * 2, BAR_HEIGHT + v_expand])
     ;
 
 module cap_solid() {
