@@ -5,9 +5,10 @@ INSERT_H = 3.5;
 T_WIDTH = 16.8;
 BAR_HEIGHT = 24.5;
 
-FAR_EDGE_DISTANCE = 100;
+FAR_EDGE_DISTANCE = 70;
 DESIRED_H = 15;  // at the top of the T
-ROT = atan2(DESIRED_H, FAR_EDGE_DISTANCE);
+SURVIVING_FEET_OFFSET = 2;
+ROT = atan2(DESIRED_H - SURVIVING_FEET_OFFSET, FAR_EDGE_DISTANCE);
 
 module insert_2d(h_expand=10, v_expand=6) {
     translate([-T_WIDTH / 2 - h_expand, 0])
