@@ -1,34 +1,34 @@
-// water key for Jura X8
+// grinder adjust key for Jura X8
+// grinder geom - outer d~20mm, inner d~13mm, nobule size~3.5mm, central dowel d~5mm
 
 $fn = 50;
 
 BEANS = true;
 
-HEADING_ANGLE = BEANS ? -135 : -45;
-
-TO_EDGE_45 = (BEANS ? 30 : 28) * sqrt(2);
-CATCHER_R = 2;
-CATCHER = true;
-TO_ROD_45 = (30 + CATCHER_R + 1) * sqrt(2);
-
-HEX_WIDTH_ADJUST = 0.1;
-
 KNOB_H = 12;
-TOTAL_H = KNOB_H + 9; // hex about 7mm
+CLEARANCE = 40;
 NCUTS = 5;
+
+OUTER_D = 20;
+TOOL_D = OUTER_D - 1.5;
+NOBULE_R = 3.5;
+NOBULE_CUT = NOBULE_R + 0.8;
+NOBULE_ASPECT = 0.75; // kinda fudgey
+CENTRAL_DOWEL_D = 5;
+DOWEL_CUT_D = CENTRAL_DOWEL_D + 1.5;
 
 difference() {
     union() {
         linear_extrude(KNOB_H)
-        scale(1.15)  // I liked the ratios, so being cheeky and just scaling
+        scale(1.1)  // I liked the ratios, so being cheeky and just scaling
         minkowski() {
             difference() {
                 circle(r=18)
                     ;
                 for (i=[0:NCUTS-1])
-                rotate(HEADING_ANGLE + (i + 0.5)*360/NCUTS)
-                translate([23, 0])
-                circle(r=9, h=99)
+                rotate((i + 0.5)*360/NCUTS)
+                translate([21.5, 0]) // stiffer than beans ergo more incut for grippiness
+                circle(r=9)
                     ;
             }
                 ;
@@ -36,46 +36,27 @@ difference() {
                 ;
         }
             ;
-        if(CATCHER)
-        rotate(HEADING_ANGLE)
-        union() {
-            linear_extrude(KNOB_H / 2)
-            translate([TO_ROD_45 / 2, 0])
-            square([TO_ROD_45, CATCHER_R * 2], center=true)
+        linear_extrude(KNOB_H + CLEARANCE)
+        difference() {
+            circle(d=TOOL_D)
                 ;
-            translate([TO_ROD_45, 0])
-            cylinder(r=CATCHER_R, h=TOTAL_H)
+            for (i=[0:5])
+            rotate(i * 60)
+            translate([OUTER_D / 2, 0])
+            scale([1, NOBULE_ASPECT])
+            circle(r=NOBULE_CUT)
+                ;
+            circle(d=DOWEL_CUT_D)
                 ;
         }
-            ;
-        cylinder(r=(10 + HEX_WIDTH_ADJUST)/sqrt(3), h=TOTAL_H, $fn=6)
-            ;
     }
         ;
     linear_extrude(2, center=true)
     mirror()
     union() {
         rotate(90)
-        if (BEANS) {
-            scale(0.75)
-            text("Beans", halign="center", valign="center")
-                ;
-        }
-        else {
-            translate([-7, 0])
-            text("H", halign="center", valign="center")
-                ;
-            translate([7, 0])
-            text("O", halign="center", valign="center")
-                ;
-            translate([0, -5])
-            scale(0.7)
-            text("2", halign="center", valign="center")
-                ;
-        }
-            ;
-        translate([BEANS ? 9 : 13, 0])
-        circle(r=3, $fn=3)
+        scale(0.7)
+        text("Grinder", halign="center", valign="center")
             ;
     }
 }
