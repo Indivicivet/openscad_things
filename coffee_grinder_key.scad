@@ -36,6 +36,7 @@ difference() {
                 ;
         }
             ;
+        color("red")
         linear_extrude(KNOB_H + CLEARANCE)
         difference() {
             circle(d=TOOL_D)
