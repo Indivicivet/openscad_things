@@ -6,7 +6,7 @@ $fn = 50;
 BEANS = true;
 
 KNOB_H = 12;
-CLEARANCE = 40;
+CLEARANCE = 50; // 40 is enough to use the tool but only with a slight angle
 NCUTS = 5;
 
 OUTER_D = 20;
