@@ -50,6 +50,10 @@ difference() {
             circle(d=DOWEL_CUT_D)
                 ;
         }
+            ;
+        translate([0, 0, KNOB_H])
+        sphere(r=KNOB_H)
+            ;
     }
         ;
     linear_extrude(2, center=true)
