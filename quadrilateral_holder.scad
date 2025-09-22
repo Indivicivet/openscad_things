@@ -4,10 +4,10 @@ $fn = 32;
 
 THETA_1 = 114;
 THETA_2 = 130.5;
-BASE_THICK = 4;
+BASE_THICK = 5;
 BASE_R = 20;
 BAND_THICK = BASE_THICK * 0.75;
-BAND_GROOVE = 0.75; // mm
+BAND_GROOVE = 1; // mm
 
 module pacman(theta, outer_only=false, r=BASE_R)
 difference() {
