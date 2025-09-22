@@ -1,5 +1,7 @@
 // quadrilateral holder -- pair can be joined by rubber band etc
 
+$fn = 32;
+
 THETA_1 = 114;
 THETA_2 = 130.5;
 BASE_THICK = 4;
@@ -19,6 +21,9 @@ difference() {
             [BASE_R * 100, 0],
             [cos(theta/2), sin(theta/2)] * BASE_R * 10
         ])
+            ;
+        translate([-BASE_R * 0.5, 0])
+        circle(d=6.2)
             ;
         if (outer_only)
         circle(r=BASE_R * 0.75)
