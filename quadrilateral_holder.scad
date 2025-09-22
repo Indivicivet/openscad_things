@@ -60,12 +60,12 @@ pacman_with_top(THETA_1)
 
 if(PREVIEW)
 color("red")
-translate([BASE_R * 0.3, 0, 2 * BASE_THICK])
+translate([BASE_R * 0.5, 0, 2 * BASE_THICK])
 rotate([180, 0, 180])
 pacman_with_top(THETA_2)
     ;
 
 if(!PREVIEW)
-translate([BASE_R * 2, -00, 0])
+translate([BASE_R * 2, 0, 0])
 pacman_with_top(THETA_2)
     ;
