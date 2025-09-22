@@ -30,7 +30,7 @@ difference() {
             ;
     }
         ;
-    translate([0, 0, (BASE_THICK - BAND_THICK) / 3])
+    translate([0, 0, (BASE_THICK - BAND_THICK) / 2])
     linear_extrude(BAND_THICK)
     difference() {
         circle(r=999)
