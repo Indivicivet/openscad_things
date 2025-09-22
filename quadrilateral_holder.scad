@@ -31,13 +31,9 @@ difference() {
     }
         ;
     translate([0, 0, (BASE_THICK - BAND_THICK) / 2])
-    linear_extrude(BAND_THICK)
-    difference() {
-        circle(r=999)
-            ;
-        circle(r=BASE_R - BAND_GROOVE)
-            ;
-    }
+    rotate_extrude()
+    translate([BASE_R - BAND_GROOVE, 0])
+    square([999, BAND_THICK])
         ;
 }
 
