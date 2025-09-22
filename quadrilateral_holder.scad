@@ -33,8 +33,14 @@ difference() {
     translate([0, 0, (BASE_THICK - BAND_THICK) / 2])
     rotate_extrude()
     translate([BASE_R - BAND_GROOVE, 0])
-    square([999, BAND_THICK])
-        ;
+    hull () {
+        translate([0, BAND_GROOVE])
+        square([BAND_GROOVE + 1, BAND_THICK - BAND_GROOVE * 2])
+            ;
+        translate([BAND_GROOVE, 0])
+        square([BAND_GROOVE, BAND_THICK])
+            ;
+    }
 }
 
 
