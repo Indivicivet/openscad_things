@@ -9,17 +9,17 @@ BASE_R = 20;
 BAND_THICK = BASE_THICK * 0.75;
 BAND_GROOVE = 0.75; // mm
 
-module pacman(theta, outer_only=false)
+module pacman(theta, outer_only=false, r=BASE_R)
 difference() {
     linear_extrude(BASE_THICK)
     difference() {
-        circle(r=BASE_R)
+        circle(r=r)
             ;
         polygon([
             [0, 0],
-            [cos(theta/2), -sin(theta/2)] * BASE_R * 10,
+            [cos(theta/2), -sin(theta/2)] * r * 10,
             [BASE_R * 100, 0],
-            [cos(theta/2), sin(theta/2)] * BASE_R * 10
+            [cos(theta/2), sin(theta/2)] * r * 10
         ])
             ;
         translate([-BASE_R * 0.5, 0])
@@ -46,6 +46,9 @@ difference() {
 
 module pacman_with_top(theta) {
     pacman(theta)
+        ;
+    translate([0, 0, BASE_THICK])
+    pacman(theta, r=BASE_R * 0.2)
         ;
     translate([0, 0, BASE_THICK])
     pacman(270, outer_only=true)
