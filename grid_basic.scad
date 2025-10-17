@@ -2,6 +2,7 @@ PITCH = 50;
 BORDER = 10;
 N = 20;
 
+linear_extrude(0.01)
 difference() {
     square(PITCH * N + BORDER)
         ;
