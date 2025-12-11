@@ -1,10 +1,10 @@
 BOARD_R = 50;
 CIRC_EXTEND_RATIO = 0.0;
-BASE_EXTEND_RATIO = 0.1;
+BASE_EXTEND_RATIO = 0.0;
 
 GAP_W = 1.5;
-EDGE_W = 1.5;
-MINK_R = 0.7;
+EDGE_W = 1.3;
+MINK_R = 0.8;
 
 // 3D params
 BASE_H = 3;
