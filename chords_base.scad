@@ -16,7 +16,7 @@ module myline(gap_w)
 square([gap_w + MINK_R * 2, BOARD_R * 2.2], center=true)
     ;
 
-module top_plate(gap_w=GAP_W)
+module top_plate(gap_w=GAP_W, cull_outside_board=false)
 minkowski() {
     difference() {
         circle(r=BOARD_R * (1 + CIRC_EXTEND_RATIO) - MINK_R, $fn=100)
@@ -37,6 +37,13 @@ minkowski() {
             translate([BOARD_R * sin(22.5), 0])
             myline(gap_w=gap_w)
                     ;
+            // fill in the outer pieces as they are border pieces
+            // not scoreable
+            if(cull_outside_board)
+            rotate(i * 45 + 22.5)
+            translate([BOARD_R * cos(22.5), -BOARD_R * 1.5])
+            square([999, BOARD_R * 3])
+                ;
         }
             ;
     }
@@ -56,7 +63,7 @@ linear_extrude(EDGE_RAISE)
 difference() {
     top_plate()
         ;
-    top_plate(gap_w=GAP_W + EDGE_W)
+    top_plate(gap_w=GAP_W + EDGE_W, cull_outside_board=true)
         ;
 }
 translate([0, 0, BASE_H - 0.001])
