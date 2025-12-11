@@ -7,7 +7,7 @@ EDGE_W = 1.5;
 MINK_R = 0.7;
 
 // 3D params
-BASE_H = 5;
+BASE_H = 3;
 MID_RAISE = 2;
 EDGE_RAISE = 5;
 
