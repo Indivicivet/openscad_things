@@ -2,6 +2,8 @@ BOARD_R = 50;
 CIRC_EXTEND_RATIO = 0.0;
 BASE_EXTEND_RATIO = 0.1;
 
+GAP_W = 1.5;
+EDGE_W = 1.5;
 MINK_R = 0.7;
 
 // 3D params
@@ -14,7 +16,7 @@ module myline(gap_w)
 square([gap_w + MINK_R * 2, BOARD_R * 2.2], center=true)
     ;
 
-module top_plate(gap_w=2)
+module top_plate(gap_w=GAP_W)
 minkowski() {
     difference() {
         circle(r=BOARD_R * (1 + CIRC_EXTEND_RATIO), $fn=100)
@@ -54,7 +56,7 @@ linear_extrude(EDGE_RAISE)
 difference() {
     top_plate()
         ;
-    top_plate(gap_w=4)
+    top_plate(gap_w=GAP_W + EDGE_W)
         ;
 }
 translate([0, 0, BASE_H - 0.001])
