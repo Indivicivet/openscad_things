@@ -19,7 +19,7 @@ square([gap_w + MINK_R * 2, BOARD_R * 2.2], center=true)
 module top_plate(gap_w=GAP_W)
 minkowski() {
     difference() {
-        circle(r=BOARD_R * (1 + CIRC_EXTEND_RATIO), $fn=100)
+        circle(r=BOARD_R * (1 + CIRC_EXTEND_RATIO) - MINK_R, $fn=100)
             ;
         for (i=[0:7]) {
             rotate(i * 45)
