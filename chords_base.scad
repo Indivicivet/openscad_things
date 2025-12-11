@@ -1,8 +1,8 @@
 BOARD_R = 50;
-CIRC_EXTEND_RATIO = 0.1;
+CIRC_EXTEND_RATIO = 0.0;
 
-GAP_W = 3;
-MINK_R = 1.5;
+GAP_W = 2;
+MINK_R = 0.7;
 
 
 module myline()
@@ -20,7 +20,17 @@ minkowski() {
             ;
         for (i=[0:7])
         rotate(i * 45 + 22.5)
-        translate([BOARD_R, 0])
+        translate([BOARD_R * cos(22.5), 0])
+        myline()
+            ;
+        for (i=[0:7])
+        rotate(i * 45)
+        translate([BOARD_R / sqrt(2), 0])
+        myline()
+            ;
+        for (i=[0:7])
+        rotate(i * 45 + 22.5)
+        translate([BOARD_R * sin(22.5), 0])
         myline()
             ;
     }
