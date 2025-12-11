@@ -39,7 +39,7 @@ minkowski() {
             ;
     }
         ;
-    circle(r=MINK_R, fn=30)
+    circle(r=MINK_R, $fn=20)
         ;
 }
     ;
