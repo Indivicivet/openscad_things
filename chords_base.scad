@@ -8,8 +8,8 @@ MINK_R = 0.8;
 
 // 3D params
 BASE_H = 3;
-MID_RAISE = 2;
-EDGE_RAISE = 5;
+MID_RAISE = 1.5;
+EDGE_RAISE = 3.5;
 
 
 module myline(gap_w)
