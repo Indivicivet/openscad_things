@@ -47,7 +47,7 @@ SHOE_H = D_BASE * sin(ANGLE) * 0.9;
 CAN_Z = H * cos(ANGLE) / 2 * 0.75;
 
 module angled_schlegelflaschen(expand_r=0)
-translate([0, 0, (D_BASE + 2 * expand_r) * sin(ANGLE) / 2])
+translate([0, 0, D_BASE * sin(ANGLE) / 2])
 rotate([0, ANGLE, 0])
 schlegelflaschen(expand_r=expand_r)
     ;
@@ -72,8 +72,15 @@ module schlegelflaschen_holder()
 difference() {
     union() {
         intersection() {
-            angled_schlegelflaschen(expand_r=SHELL_OUTER)
-                ;
+            intersection() {
+                angled_schlegelflaschen(expand_r=SHELL_OUTER)
+                    ;
+                // rotated AND expanded schlegelflaschen will go z<0
+                // (this is fine, we want the normal rotated one to hit z=0)
+                linear_extrude(999)
+                square(999, center=true)
+                    ;
+            }
             // angular cutoff to support bottle, kinda arbitrary
             rotate([0, -22, 0])
             linear_extrude(H * cos(ANGLE) / 2 * 0.9, center=true)
