@@ -90,15 +90,12 @@ difference() {
                 ;
         }
             ;
-        if(PRONGS)
         linear_extrude(10)
-        for (ys=[-1, 1])
-        translate([0, D_BASE / 2 * ys])
         hull() {
-            circle(d=15)
+            circle(d=D_BASE)
                 ;
-            translate([H * sin(ANGLE) * 0.75, 0])
-            circle(d=15)
+            translate([H * sin(ANGLE) * 0.3, 0])
+            circle(d=D_BASE)
                 ;
         }
             ;
@@ -135,6 +132,6 @@ can_pos_xy()
 can_440()
     ;
 
-!color(alpha=0.5)
+color(alpha=0.5)
 schlegelflaschen_holder()
     ;
