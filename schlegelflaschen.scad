@@ -12,6 +12,13 @@ TARGET_Z = SHELF_Z;
 SHELL_OUTER = 7;
 SHELL_THICK = 4;
 
+CAN_D = 59;
+
+CAN_CYLINDER = true;
+CAN_RIM_H = 15;
+
+PRONGS = false;
+
 module schlegelflaschen(expand_r=0)
 rotate_extrude()
 polygon([
@@ -35,10 +42,28 @@ function angle_fit(h, w, t) = 2 * atan(
 ANGLE = angle_fit(H, (D_BASE + D_NECK) / 2, TARGET_Z);
 echo(ANGLE);
 
+CAN_H = H * cos(ANGLE) / 2 * 0.8;
+
 module angled_schlegelflaschen(expand_r=0)
 translate([0, 0, D_BASE * sin(ANGLE) / 2])
 rotate([0, ANGLE, 0])
 schlegelflaschen(expand_r=expand_r)
+    ;
+
+module can_330(expand_r=0)
+linear_extrude(115.2)
+circle(d=CAN_D + expand_r * 2)
+    ;
+
+module can_440(expand_r=0)
+linear_extrude(150)
+circle(d=CAN_D + expand_r * 2)
+    ;
+
+module can_pos_xy()
+// completely eyeballed can balance pos
+translate([-50 * sin(ANGLE), 0])
+children()
     ;
 
 module schlegelflaschen_holder()
@@ -64,15 +89,29 @@ difference() {
             square(999, center=true)
                 ;
         }
+            ;
+        if(PRONGS)
         linear_extrude(10)
+        for (ys=[-1, 1])
+        translate([0, D_BASE / 2 * ys])
         hull() {
-            circle(d=(D_BASE + SHELL_PLUS_D) * 0.95)
+            circle(d=15)
                 ;
-            translate([H * sin(ANGLE) * 0.6, 0])
-            circle(d=D_BASE)
+            translate([H * sin(ANGLE) * 0.75, 0])
+            circle(d=15)
                 ;
         }
             ;
+        if(CAN_CYLINDER)
+        can_pos_xy()
+        difference() {
+            linear_extrude(CAN_H + CAN_RIM_H)
+            circle(d=CAN_D + 10)
+                ;
+            translate([0, 0, CAN_H])
+            can_440(expand_r=2)
+                ;
+        }
     }
         ;
     angled_schlegelflaschen(expand_r=SHELL_OUTER - SHELL_THICK)
@@ -90,6 +129,12 @@ color("green", alpha=0.5)
 angled_schlegelflaschen()
     ;
 
-schlegelflaschen_holder()
+color("blue", alpha=0.5)
+translate([0, 0, CAN_H])
+can_pos_xy()
+can_440()
     ;
 
+!color(alpha=0.5)
+schlegelflaschen_holder()
+    ;
