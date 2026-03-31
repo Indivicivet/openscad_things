@@ -74,6 +74,7 @@ difference() {
         }
             ;
     }
+        ;
     angled_schlegelflaschen(expand_r=SHELL_OUTER - SHELL_THICK)
         ;
 }
