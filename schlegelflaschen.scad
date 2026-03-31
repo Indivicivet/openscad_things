@@ -1,12 +1,12 @@
 // schlegelflaschen too tall to store vertically?
 
-H = 330;
+H = 350; // can be 330
 H_BODY = 130;
 H_SHOULDER = 130;
 D_BASE = 75;
 D_NECK = 29;
 
-SHELF_Z = 310;
+SHELF_Z = 328;
 TARGET_Z = SHELF_Z;
 
 SHELL_PLUS_D = 10;
@@ -32,6 +32,7 @@ function angle_fit(h, w, t) = 2 * atan(
     ;
 
 ANGLE = angle_fit(H, (D_BASE + D_NECK) / 2, TARGET_Z);
+echo(ANGLE);
 
 module angled_schlegelflaschen(expand_d=0)
 translate([0, 0, D_BASE * sin(ANGLE) / 2])
