@@ -45,6 +45,7 @@ echo(ANGLE);
 SHOE_H = D_BASE * sin(ANGLE) * 0.9;
 
 CAN_Z = H * cos(ANGLE) / 2 * 0.75;
+echo(CAN_Z);
 
 module angled_schlegelflaschen(expand_r=0)
 translate([0, 0, D_BASE * sin(ANGLE) / 2])
