@@ -74,9 +74,7 @@ difference() {
         intersection() {
             angled_schlegelflaschen(expand_r=SHELL_OUTER)
                 ;
-            linear_extrude(H * cos(ANGLE) / 2 * 0.85)
-            square(999, center=true)
-                ;
+            // angular cutoff to support bottle, kinda arbitrary
             rotate([0, -25, 0])
             linear_extrude(H * cos(ANGLE) / 2 * 0.9, center=true)
             square(999, center=true)
