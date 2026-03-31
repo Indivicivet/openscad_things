@@ -90,11 +90,11 @@ difference() {
                 ;
         }
             ;
-        linear_extrude(10)
+        linear_extrude(5)
         hull() {
             circle(d=D_BASE)
                 ;
-            translate([H * sin(ANGLE) * 0.3, 0])
+            translate([H * sin(ANGLE) * 0.35, 0])
             circle(d=D_BASE)
                 ;
         }
