@@ -42,7 +42,9 @@ function angle_fit(h, w, t) = 2 * atan(
 ANGLE = angle_fit(H, (D_BASE + D_NECK) / 2, TARGET_Z);
 echo(ANGLE);
 
-CAN_H = H * cos(ANGLE) / 2 * 0.8;
+SHOE_H = D_BASE * sin(ANGLE) * 0.8;
+
+CAN_Z = H * cos(ANGLE) / 2 * 0.75;
 
 module angled_schlegelflaschen(expand_r=0)
 translate([0, 0, D_BASE * sin(ANGLE) / 2])
@@ -81,31 +83,32 @@ difference() {
                 ;
         }
             ;
-        intersection() {
-            translate([0, 0, 20])  // magic number, should be angle-dep
-            sphere(d=D_BASE + SHELL_OUTER * 2)
-                ;
-            linear_extrude(999)
-            square(999, center=true)
-                ;
-        }
-            ;
-        linear_extrude(5)
         hull() {
-            circle(d=D_BASE)
+            intersection() {
+                angled_schlegelflaschen(expand_r=SHELL_OUTER)
+                    ;
+                linear_extrude(SHOE_H)
+                square(999, center=true)
+                    ;
+            }
                 ;
+            linear_extrude(5)
             translate([H * sin(ANGLE) * 0.35, 0])
             circle(d=D_BASE)
+                ;
+            linear_extrude(SHOE_H)
+            can_pos_xy()
+            circle(d=CAN_D + 10)
                 ;
         }
             ;
         if(CAN_CYLINDER)
         can_pos_xy()
         difference() {
-            linear_extrude(CAN_H + CAN_RIM_H)
+            linear_extrude(CAN_Z + CAN_RIM_H)
             circle(d=CAN_D + 10)
                 ;
-            translate([0, 0, CAN_H])
+            translate([0, 0, CAN_Z])
             can_440(expand_r=2)
                 ;
         }
@@ -127,7 +130,7 @@ angled_schlegelflaschen()
     ;
 
 color("blue", alpha=0.5)
-translate([0, 0, CAN_H])
+translate([0, 0, CAN_Z])
 can_pos_xy()
 can_440()
     ;
