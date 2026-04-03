@@ -9,8 +9,8 @@ D_NECK = 29;
 SHELF_Z = 333;
 TARGET_Z = 330;
 
-SHELL_OUTER = 7;
-SHELL_THICK = 4;
+SHELL_OUTER = 4;
+SHELL_THICK = 2;
 
 CAN_D = 59;
 
@@ -43,6 +43,7 @@ ANGLE = angle_fit(H, (D_BASE + D_NECK) / 2, TARGET_Z);
 echo(ANGLE);
 
 SHOE_H = (D_BASE + SHELL_THICK * 2) * sin(ANGLE);
+SHOE_LIP_H = 2;
 
 CAN_Z = H * cos(ANGLE) / 2 * 0.75;
 echo(CAN_Z);
@@ -98,7 +99,7 @@ difference() {
                     ;
             }
                 ;
-            linear_extrude(5)
+            linear_extrude(SHOE_LIP_H)
             translate([H * sin(ANGLE) * 0.35, 0])
             circle(d=D_BASE)
                 ;
