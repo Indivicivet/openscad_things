@@ -14,7 +14,7 @@ SHELL_THICK = 4;
 
 CAN_D = 59;
 
-CAN_CYLINDER = true;
+CAN_CYLINDER = false;
 CAN_RIM_H = 15;
 
 PRONGS = false;
