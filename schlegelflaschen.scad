@@ -107,6 +107,10 @@ difference() {
             can_pos_xy()
             circle(d=CAN_D + 10)
                 ;
+            if (!CAN_CYLINDER)
+            linear_extrude(10)
+            circle(d=D_BASE * 0.4)
+                ;
         }
             ;
         if(CAN_CYLINDER)
@@ -119,6 +123,7 @@ difference() {
             can_440(expand_r=2)
                 ;
         }
+            ;
     }
         ;
     angled_schlegelflaschen(expand_r=SHELL_OUTER - SHELL_THICK)
