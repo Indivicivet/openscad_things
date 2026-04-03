@@ -102,6 +102,7 @@ difference() {
             translate([H * sin(ANGLE) * 0.35, 0])
             circle(d=D_BASE)
                 ;
+            if (CAN_CYLINDER)
             linear_extrude(SHOE_H)
             can_pos_xy()
             circle(d=CAN_D + 10)
@@ -135,6 +136,7 @@ color("green", alpha=0.5)
 angled_schlegelflaschen()
     ;
 
+if (CAN_CYLINDER)
 color("blue", alpha=0.5)
 translate([0, 0, CAN_Z])
 can_pos_xy()
