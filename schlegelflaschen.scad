@@ -42,7 +42,7 @@ function angle_fit(h, w, t) = 2 * atan(
 ANGLE = angle_fit(H, (D_BASE + D_NECK) / 2, TARGET_Z);
 echo(ANGLE);
 
-SHOE_H = D_BASE * sin(ANGLE) * 0.9;
+SHOE_H = (D_BASE + SHELL_THICK * 2) * sin(ANGLE);
 
 CAN_Z = H * cos(ANGLE) / 2 * 0.75;
 echo(CAN_Z);
